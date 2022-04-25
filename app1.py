@@ -11,20 +11,9 @@ from matplotlib import pyplot as plt
 #Import calculations.py
 from calculations import cal_SOi, cal_NOi, cal_PMi, cal_RSPMi, cal_SPMi, cal_aqi, AQI_Range
 
-# for linear regression model
+# for model
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_log_error
-from sklearn.metrics import mean_squared_error
-from sklearn.metrics import r2_score, mean_squared_error
-from sklearn.model_selection import KFold
-from sklearn.model_selection import cross_val_score
-from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
-
-
-from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import confusion_matrix 
 
 
 
