@@ -217,7 +217,8 @@ elif choose == "Conclusion":
     st.subheader("Conclusion")
     st.write("""
         1. AQI is dependent on pollutant with the dominant value.
-        2. By each year AQI kept worsening.
+        2. AQI is highly correlated with all the independent variables(so2, no2, rspm, spm,pm2.5)
+        3. By each year AQI kept worsening.
         
         * **Model Used:**
         Random Forest Classifier
