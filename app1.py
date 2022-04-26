@@ -4,8 +4,6 @@ import streamlit.components.v1 as html
 import seaborn as sns
 import pandas as pd
 import numpy as np
-import matplotlib
-matplotlib.use('TkAgg')
 from matplotlib import pyplot as plt
 
 #Import calculations.py
