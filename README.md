@@ -12,3 +12,6 @@ To run This streamlit app
 
 - run your streamlit app using command on your virtualenvionment 
 >>streamlit run app1.py
+
+
+View App here : https://share.streamlit.io/mauryapam/air-quality-analysis-india/app1.py
