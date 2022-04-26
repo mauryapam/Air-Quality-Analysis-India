@@ -177,36 +177,41 @@ elif choose == "Prediction":
         5. Train model to predict and classify AQI range(Random forest classifier is used).
     """)
 
-
-    
-    st.subheader('Check AQI Here')
-    # for User Input
-    input_col, display_col= st.columns(2)
-    input_so2 = input_col.text_input('Enter SO2 value')
-    input_no2 = input_col.text_input('Enter NO2 value')
-    input_rspm = input_col.text_input('Enter RSPM value')
-    input_spm = input_col.text_input('Enter SPM value')
-    input_pm2_5 = input_col.text_input('Enter PM2.5 Value')
-
-
     x = prediction_data[['so2','no2','rspm','spm','pm2_5']]
     y = prediction_data['AQI_Range']
 
     x_train, x_test, y_train, y_test = train_test_split(x,y,train_size = 0.8, test_size = 0.2, random_state=0)
 
-  
+    
     model = RandomForestClassifier(n_estimators=10)
     model.fit(x_train,y_train)
 
-    if st.button('Predict'):
-                
-        accuracy = model.score(x_test,y_test)
-        result= model.predict([[input_so2, input_no2, input_rspm, input_spm, input_pm2_5]])
-        display_col.write('Predicted AQI Range is: ')
-        display_col.write(result)
+    with st.form(key="aqi_form", clear_on_submit=False):
+        st.subheader('Check AQI Here')
 
-        display_col.write('With the model accuracy of : ')
-        display_col.text(accuracy)
+    
+        # for User Input
+
+        input_col, display_col= st.columns(2)
+        input_so2 = input_col.number_input('Enter SO2 value')
+        input_no2 = input_col.number_input('Enter NO2 value')
+        input_rspm = input_col.number_input('Enter RSPM value')
+        input_spm = input_col.number_input('Enter SPM value')
+        input_pm2_5 = input_col.number_input('Enter PM2.5 Value')
+
+        predict = st.form_submit_button('Predict')
+
+
+
+        if predict:
+                    
+            accuracy = model.score(x_test,y_test)
+            result= model.predict([[input_so2, input_no2, input_rspm, input_spm, input_pm2_5]])
+            display_col.write('Predicted AQI Category is: ')
+            display_col.write(result)
+
+            display_col.write('With the model accuracy of : ')
+            display_col.text(accuracy)
 
 
 # ------------------------------Downloads section----------------------------------
